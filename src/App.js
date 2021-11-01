@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import axios from "axios";
-import BasicCard from "./Card";
+import SupplyCard from "./Card";
 
 const ADDR_LIST = [
   "0x0000000000000000000000000000000000001000",
@@ -30,13 +30,13 @@ function App() {
         summaryBalance += parseInt(item.balance) / Math.pow(10, 8);
         console.log(summaryBalance);
       });
-      let cirulatingSuppy =
+      let cirulatingSupply =
         (TOTAL_SUPPLY - summaryBalance) / Math.pow(10, 8) / 100;
       console.log(TOTAL_SUPPLY);
-      console.log(cirulatingSuppy);
+      console.log(cirulatingSupply);
       console.log(summaryBalance > TOTAL_SUPPLY);
 
-      setCirkSupply(cirulatingSuppy);
+      setCirkSupply(cirulatingSupply);
       setTotalBalance(summaryBalance);
     } catch (err) {
       console.error(err.message);
@@ -57,7 +57,15 @@ function App() {
       {/* <BasicTable/> */}
       {cirkSupply && totalBalance && (
         <div>
-          <BasicCard cirkSupply={cirkSupply} />
+          <SupplyCard supply={cirkSupply} title="Circulating supply" />
+          <SupplyCard
+            supply={TOTAL_SUPPLY / Math.pow(10, 10)}
+            title="Total supply"
+          />
+          <SupplyCard
+            supply={cirkSupply - TOTAL_SUPPLY / Math.pow(10, 10)}
+            title="Locked"
+          />
           {/* <h4>Total balance on accounts: {totalBalance}</h4> */}
         </div>
         // <ul>

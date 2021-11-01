@@ -14,17 +14,17 @@ const bull = (
   </Box>
 );
 
-export default function BasicCard({ cirkSupply }) {
+export default function SupplyCard({ supply, title }) {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Circulating supply
+          {title}
         </Typography>
         <Typography variant="h5" component="div">
           <NumberFormat
             thousandsGroupStyle="thousand"
-            value={cirkSupply}
+            value={supply}
             decimalSeparator="."
             displayType="text"
             type="text"
