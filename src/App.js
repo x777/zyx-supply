@@ -27,8 +27,7 @@ function App() {
 
       let summaryBalance = 0;
       data.result.map((item) => {
-        summaryBalance += parseInt(item.balance);
-        summaryBalance = summaryBalance / Math.pow(10, 10);
+        summaryBalance += parseInt(item.balance) / Math.pow(10, 10);
         console.log(summaryBalance);
       });
       let cirulatingSuppy = (TOTAL_SUPPLY - summaryBalance) / Math.pow(10, 10);
@@ -50,7 +49,7 @@ function App() {
     }, 10000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [cirkSupply]);
 
   return (
     <div>
