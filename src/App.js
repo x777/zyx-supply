@@ -30,7 +30,8 @@ function App() {
         summaryBalance += parseInt(item.balance) / Math.pow(10, 8);
         console.log(summaryBalance);
       });
-      let cirulatingSuppy = (TOTAL_SUPPLY - summaryBalance) / Math.pow(10, 8);
+      let cirulatingSuppy =
+        (TOTAL_SUPPLY - summaryBalance) / Math.pow(10, 8) / 100;
       console.log(TOTAL_SUPPLY);
       console.log(cirulatingSuppy);
       console.log(summaryBalance > TOTAL_SUPPLY);
