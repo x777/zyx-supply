@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BigNumber } from "bignumber.js";
 
 const ADDR_LIST = [
   "0x0000000000000000000000000000000000001000",
