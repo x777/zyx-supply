@@ -27,10 +27,10 @@ function App() {
 
       let summaryBalance = 0;
       data.result.map((item) => {
-        summaryBalance += parseInt(item.balance) / Math.pow(10, 10);
+        summaryBalance += parseInt(item.balance) / Math.pow(10, 8);
         console.log(summaryBalance);
       });
-      let cirulatingSuppy = (TOTAL_SUPPLY - summaryBalance) / Math.pow(10, 10);
+      let cirulatingSuppy = (TOTAL_SUPPLY - summaryBalance) / Math.pow(10, 8);
       console.log(TOTAL_SUPPLY);
       console.log(cirulatingSuppy);
       console.log(summaryBalance > TOTAL_SUPPLY);
