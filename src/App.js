@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 import { useEffect, useState } from "react";
+
 import axios from "axios";
+import BasicCard from "./Card";
 
 const ADDR_LIST = [
   "0x0000000000000000000000000000000000001000",
@@ -9,7 +11,7 @@ const ADDR_LIST = [
   "0x7191c48d168dB12121C01f5C645e0c2cd0A030ec",
 ];
 
-const TOTAL_SUPPLY = 900000000 * Math.pow(10, 8);
+const TOTAL_SUPPLY = 900000000 * Math.pow(10, 10);
 
 function App() {
   const [totalBalance, setTotalBalance] = useState(null);
@@ -26,10 +28,14 @@ function App() {
       let summaryBalance = 0;
       data.result.map((item) => {
         summaryBalance += parseInt(item.balance);
-        summaryBalance = summaryBalance / Math.pow(10, 8);
+        summaryBalance = summaryBalance / Math.pow(10, 10);
+        console.log(summaryBalance);
       });
-      let cirulatingSuppy = (TOTAL_SUPPLY - summaryBalance) / Math.pow(10, 8);
+      let cirulatingSuppy = (TOTAL_SUPPLY - summaryBalance) / Math.pow(10, 10);
+      console.log(TOTAL_SUPPLY);
+      console.log(cirulatingSuppy);
       console.log(summaryBalance > TOTAL_SUPPLY);
+
       setCirkSupply(cirulatingSuppy);
       setTotalBalance(summaryBalance);
     } catch (err) {
@@ -49,11 +55,10 @@ function App() {
   return (
     <div>
       {/* <BasicTable/> */}
-      <h1>Circulating supply</h1>
       {cirkSupply && totalBalance && (
         <div>
-          <h4>Total balance on accounts: {totalBalance}</h4>
-          <h4>Circulating supply: {cirkSupply}</h4>
+          <BasicCard cirkSupply={cirkSupply} />
+          {/* <h4>Total balance on accounts: {totalBalance}</h4> */}
         </div>
         // <ul>
         //   {cirkSupply.map((item, index) => (
