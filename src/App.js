@@ -63,7 +63,7 @@ function App() {
             title="Total supply"
           />
           <SupplyCard
-            supply={TOTAL_SUPPLY - cirkSupply / Math.pow(10, 10)}
+            supply={TOTAL_SUPPLY / Math.pow(10, 10) - cirkSupply}
             title="Locked"
           />
           {/* <h4>Total balance on accounts: {totalBalance}</h4> */}
