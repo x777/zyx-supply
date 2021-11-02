@@ -58,10 +58,12 @@ function App() {
       {cirkSupply && totalBalance && (
         <div>
           <SupplyCard supply={cirkSupply} title="Circulating supply" />
+          <br />
           <SupplyCard
             supply={TOTAL_SUPPLY / Math.pow(10, 10)}
             title="Total supply"
           />
+          <br />
           <SupplyCard
             supply={TOTAL_SUPPLY / Math.pow(10, 10) - cirkSupply}
             title="Locked"
