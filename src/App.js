@@ -15,6 +15,9 @@ const ADDR_LIST = [
 
 const SPECIAL_ACCOUNTS = ["0x0000000000000000000000000000000000001000"];
 
+// Interval update
+const TIMER = 15000;
+
 // var TOTAL_SUPPLY = 900000000 * Math.pow(10, 10);
 
 function App() {
@@ -65,18 +68,19 @@ function App() {
         console.error(err.message);
       }
     }
-    getData();
     const interval = setInterval(() => {
       getData();
-    }, 15000);
+    }, TIMER);
+
+    getData();
 
     return () => clearInterval(interval);
-  }, [cirkulatedSupply]);
+  }, []);
 
   return (
     <div>
       {/* <BasicTable/> */}
-      {cirkulatedSupply && (
+      {cirkulatedSupply && total && locked && (
         <div>
           <SupplyCard supply={cirkulatedSupply} title="Circulating supply" />
           <br />
